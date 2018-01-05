@@ -28,37 +28,38 @@ calc.addEventListener("click", function(){
 // *    Declare funtions:      *
 // **********************
 
-function yourTime(event){
-    // pwr, cookTimeMin, cookTimeSec
-    let minuteConversion = (700 / pwr.value) * cookTimeMin.value;
-        console.log("minuteConversion: ", minuteConversion);
+    function yourTime() {
 
-    let minutesToSeconds = (minuteConversion * 60);
+        let minutesToMilliseconds = cookTimeMin.value * 60000;
+            console.log("minutesToMilliseconds :", minutesToMilliseconds);
 
-    let decimalSeconds = (cookTimeSec.value / 60) * 100;
-        console.log("decimalSeconds: ", decimalSeconds);
+        let secondsToMilliseconds = cookTimeSec.value * 1000;
+            console.log("secondsToMilliseconds:", secondsToMilliseconds);
 
-    let secondConversion = (700 / pwr.value) * decimalSeconds;
-        console.log("secondConversion: ", secondConversion);
+        let totalMilliseconds = minutesToMilliseconds + secondsToMilliseconds;
+            console.log("totalMilliseconds :", totalMilliseconds);
 
-    let standardSeconds = (secondConversion / 100) * 60;
-        console.log("standardSeconds: ", standardSeconds);
+        let powerAdjustedMilliseconds = (700 / pwr.value) * totalMilliseconds;
+            console.log("powerAdjustedMilliseconds: ", powerAdjustedMilliseconds);
+
+        let newMinutes = Math.floor(powerAdjustedMilliseconds / 60000);
+            console.log("newMinutes :", newMinutes);
+        
+        let newSeconds = ((powerAdjustedMilliseconds % 60000) / 1000).toFixed(0);
+            console.log("newSeconds :", newSeconds);
+
+            answerAreaA.innerHTML = newMinutes;
+            answerAreaB.innerHTML = newSeconds;
+        return newMinutes + ":" + (newSeconds < 10 ? '0' : '') + newSeconds;
+        
+            
+        }
+        
+        yourTime(); 
 
 
-    let yourResultDecimal = (minutesToSeconds + standardSeconds) / 60;
-        console.log("yourResultDecimal: ", yourResultDecimal);
-
-    // let yourResultTime = (yourResultDecimal / 100) * 60;
-    //     console.log("yourResultTime: ", yourResultTime);
-
-
-
-    let total = answer.innerHTML = yourResultDecimal.value;
-
-    return yourTime;
-}
-
-// function answer (yourResult){
-//     answerArea.innerHTML = yourResult;
-// }
-
+    
+        // function answerTime(newMinutes, newSeconds) {
+        //     let resultMinutes = answerAreaA.innerHTML.newMinutes;
+        //     let resultSeconds = answerAreaB.innerHTML.newSeconds;
+        // }
