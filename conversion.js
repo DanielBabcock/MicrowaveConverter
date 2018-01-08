@@ -1,28 +1,23 @@
-// console.log("calculator.js: ");
+"use strict"
+// console.log("conversion.js: ");
 
 // formula you time will === (700/Your Power)*Listed Time
 
 // **********************
 // *    Get elements:      *
 // **********************
-let pwr = document.getElementById("power");
-let cookTimeMin = document.getElementById("cookTimeM");
-let cookTimeSec = document.getElementById("cookTimeS");
-let answer = document.getElementById("answerArea");
-let calc = document.getElementById("calculate");
+    let pwr = document.getElementById("power");
+    let cookTimeMin = document.getElementById("cookTimeM");
+    let cookTimeSec = document.getElementById("cookTimeS");
+    let answer = document.getElementById("answerArea");
+    let calc = document.getElementById("calculate");
 
 // **********************
 // *    Add listeners:      *
 // **********************
-calc.addEventListener("click", function(){
-    yourTime();
-});
-
-// console.log("Minutes :", cookTimeMin);
-// console.log("Seconds :", cookTimeSec);
-// console.log("Calc fired :", calc);
-// console.log("yourTime fired :", yourTime);
-
+    calc.addEventListener("click", function(){
+        yourTime();
+    });
 
 // **********************
 // *    Declare funtions:      *
@@ -50,16 +45,12 @@ calc.addEventListener("click", function(){
 
             answerAreaA.innerHTML = newMinutes;
             answerAreaB.innerHTML = newSeconds;
+            
         return newMinutes + ":" + (newSeconds < 10 ? '0' : '') + newSeconds;
         
+        // console.log("Something happening after return in yourTime : ");
             
-        }
-        
-        yourTime(); 
+        };
 
-
-    
-        // function answerTime(newMinutes, newSeconds) {
-        //     let resultMinutes = answerAreaA.innerHTML.newMinutes;
-        //     let resultSeconds = answerAreaB.innerHTML.newSeconds;
-        // }
+        // yourTime();
+        // console.log(" Something happening after yourTime: ");
